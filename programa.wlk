@@ -13,16 +13,26 @@ class UserExc inherits Exception {
 }
 
 class Asistente {
-    const tipoAbono
+    var tipoAbono
+    var descuento
+
     var entradasHistoricas = []
     var saldo
 
     method comprar(entrada) {
         if (saldo > 0) {
-            saldo -= entrada.precio()
+            saldo -= tipoAbono.aplicarDescuento(entrada, descuento)
             entradasHistoricas.add(entrada)
         } else {
             throw new UserExc()
         }
     }
+}
+
+object fan {
+    method aplicarDescuento(entrada, descuento) = entrada.precio()
+}
+
+object vip {
+    method aplicarDescuento(entrada, descuento) = entrada.precio() * descuento
 }
