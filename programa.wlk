@@ -1,10 +1,11 @@
 class Entrada {
     const banda
-    const fecha
+    const fecha = new Date()
     const precioBase=1000
 
     method impuesto() = 0
     method precio() = precioBase + self.impuesto()
+    method fecha() = fecha
 }
 
 
@@ -26,6 +27,12 @@ class Asistente {
         } else {
             throw new UserExc()
         }
+    }
+
+    method entradasDelAnioAnterior() {
+        const hoy = new Date()
+
+        return entradasHistoricas.filter({ entrada => entrada.fecha().year() == hoy.year() - 1 })
     }
 }
 
