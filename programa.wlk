@@ -6,6 +6,7 @@ class Entrada {
     method impuesto() = 0
     method precio() = precioBase + self.impuesto()
     method fecha() = fecha
+    method banda() = banda
 }
 
 
@@ -32,8 +33,10 @@ class Asistente {
     method entradasDelAnioAnterior() {
         const hoy = new Date()
 
-        return entradasHistoricas.filter({ entrada => entrada.fecha().year() == hoy.year() - 1 })
+        return entradasHistoricas.filter( {entrada => entrada.fecha().year() == hoy.year() - 1} )
     }
+
+    method bandasVistas() = entradasHistoricas.map( {entrada => entrada.banda()} ).asSet()
 }
 
 object fan {
