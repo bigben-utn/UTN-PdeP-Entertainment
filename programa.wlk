@@ -19,7 +19,8 @@ class Asistente {
 
     method comprar(entrada) {
         if (saldo > 0) {
-            // lógica pendiente
+            saldo -= entrada.precio()
+            entradasHistoricas.add(entrada)
         } else {
             throw new UserExc()
         }
