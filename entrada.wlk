@@ -5,4 +5,5 @@ class Entrada {
 
     method impuesto() = 0
     method precio() = precioBase + self.impuesto()
+    method esDelAnioAnterior() = fecha.year() == new Date().year() - 1
 }

@@ -16,15 +16,10 @@ class Asistente {
         }
     }
 
-    method entradasDelAnioAnterior() {
-        const hoy = new Date()
-
-        return entradasHistoricas.filter( {entrada => entrada.fecha().year() == hoy.year() - 1} )
-    }
+    method entradasDelAnioAnterior() = entradasHistoricas.filter( {entrada => entrada.esDelAnioAnterior()} )
 
     method bandasVistas() = entradasHistoricas.map( {entrada => entrada.banda()} ).asSet()
 }
-
 
 object fan {
     method aplicarDescuento(entrada) = entrada.precio()
@@ -33,5 +28,5 @@ object fan {
 class Vip {
     var descuento
 
-    method aplicarDescuento(entrada) = entrada.precio() * descuento
+    method aplicarDescuento(entrada) = entrada.precio() * (1 - descuento)
 }
