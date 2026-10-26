@@ -1,18 +1,5 @@
-class Entrada {
-    const banda
-    const fecha = new Date()
-    const precioBase=1000
-
-    method impuesto() = 0
-    method precio() = precioBase + self.impuesto()
-    method fecha() = fecha
-    method banda() = banda
-}
-
-
-class UserExc inherits Exception {
-    override method message() = "El potencial asistente no puede comprar la entrada: Su saldo es negativo"
-}
+import entrada.*
+import excepciones.*
 
 class Asistente {
     var tipoAbono
@@ -26,7 +13,7 @@ class Asistente {
             saldo -= tipoAbono.aplicarDescuento(entrada, descuento)
             entradasHistoricas.add(entrada)
         } else {
-            throw new UserExc()
+            throw new AsistenteCompraConSaldoNegativo()
         }
     }
 
