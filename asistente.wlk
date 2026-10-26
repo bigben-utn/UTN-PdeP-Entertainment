@@ -19,6 +19,12 @@ class Asistente {
     method entradasDelAnioAnterior() = entradasHistoricas.filter( {entrada => entrada.esDelAnioAnterior()} )
 
     method bandasVistas() = entradasHistoricas.map( {entrada => entrada.banda()} ).asSet()
+
+    method gastoTotalSinDescuento() = entradasHistoricas.map( {entrada => entrada.precio()} ).sum()
+
+    method cantidadEntradasCompradas() = entradasHistoricas.size()
+
+    method entradasHistorica() = entradasHistoricas
 }
 
 object fan {
