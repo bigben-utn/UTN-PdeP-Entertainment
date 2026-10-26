@@ -3,14 +3,13 @@ import excepciones.*
 
 class Asistente {
     var tipoAbono
-    var descuento
 
     var entradasHistoricas = []
     var saldo
 
     method comprar(entrada) {
         if (saldo > 0) {
-            saldo -= tipoAbono.aplicarDescuento(entrada, descuento)
+            saldo -= tipoAbono.aplicarDescuento(entrada)
             entradasHistoricas.add(entrada)
         } else {
             throw new AsistenteCompraConSaldoNegativo()
@@ -26,10 +25,13 @@ class Asistente {
     method bandasVistas() = entradasHistoricas.map( {entrada => entrada.banda()} ).asSet()
 }
 
+
 object fan {
-    method aplicarDescuento(entrada, descuento) = entrada.precio()
+    method aplicarDescuento(entrada) = entrada.precio()
 }
 
-object vip {
-    method aplicarDescuento(entrada, descuento) = entrada.precio() * descuento
+class Vip {
+    var descuento
+
+    method aplicarDescuento(entrada) = entrada.precio() * descuento
 }
