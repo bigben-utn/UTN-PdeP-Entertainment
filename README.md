@@ -9,3 +9,9 @@ Herencia: jerarquías donde las subclases reutilizan estado y comportamiento de 
 ​Clases: Banda (superclase), BandaRock, BandaTrap y BandaIndie (subclases).
 ​Métodos: BandaTrap.canon() y BandaTrap.gastoExtra().
 ​Detalle: BandaTrap reescribe el comportamiento del canon haciendo override method canon() = super() * self.popularidad(), combinando el comportamiento de la superclase mediante super() con su propia lógica de popularidad
+
+Encapsulamiento: Principio que restringe el acceso directo al estado interno de un objeto, protegiendo sus invariantes y exponiendo únicamente una interfaz controlada de mensajes.
+​Aplicación en el código:
+​Clase: Asistente.
+​Método: Asistente.comprar(entrada).
+​Detalle: Las referencias saldo y entradasHistoricas no se modifican de forma externa; la compra valida el saldo antes de descontar dinero y añadir la entrada, garantizando la consistencia interna del objeto.
