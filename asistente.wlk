@@ -2,10 +2,9 @@ import entrada.*
 import excepciones.*
 
 class Asistente {
-    var tipoAbono
-
-    var entradasHistoricas = []
+    var property tipoAbono
     var saldo
+    const entradasHistoricas = []
 
     method comprar(entrada) {
         if (saldo > 0) {
@@ -16,23 +15,31 @@ class Asistente {
         }
     }
 
-    method entradasDelAnioAnterior() = entradasHistoricas.filter( {entrada => entrada.esDelAnioAnterior()} )
+    method bonificarAbono() {
+        tipoAbono.bonificar()
+    }
 
-    method bandasVistas() = entradasHistoricas.map( {entrada => entrada.banda()} ).asSet()
+    method entradasDelAnioAnterior() = entradasHistoricas.filter({ entrada => entrada.esDelAnioAnterior() })
 
-    method gastoTotalSinDescuento() = entradasHistoricas.map( {entrada => entrada.precio()} ).sum()
+    method bandasVistas() = entradasHistoricas.map({ entrada => entrada.banda().nombre() }).asSet()
+
+    method gastoTotalSinDescuento() = entradasHistoricas.sum({ entrada => entrada.precio() })
 
     method cantidadEntradasCompradas() = entradasHistoricas.size()
 
-    method entradasHistorica() = entradasHistoricas
+    method entradasHistoricas() = entradasHistoricas
 }
 
 object fan {
     method aplicarDescuento(entrada) = entrada.precio()
+    method bonificar() {} // polimorfismo con Vip
 }
 
 class Vip {
-    var descuento
+    var property descuento
 
     method aplicarDescuento(entrada) = entrada.precio() * (1 - descuento)
+    method bonificar() {
+        descuento += 0.01
+    }
 }
