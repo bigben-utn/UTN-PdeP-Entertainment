@@ -21,3 +21,9 @@ Manejo de Excepciones: Uso de fallas explícitas para detener la ejecución ante
 ​Clase: Asistente.
 ​Método: Asistente.comprar(entrada).
 ​Detalle: Si el saldo <= 0, se lanza throw new AsistenteCompraConSaldoNegativo(), interrumpiendo el flujo antes de modificar las colecciones o el dinero del asistente.
+
+Delegación: Separación clara de responsabilidades confiando tareas a objetos idóneos, utilizando bloques de código (closures) sobre colecciones para procesar datos de forma declarativa.
+​Aplicación en el código:
+​Clase / Objeto: productora.
+​Métodos: productora.gananciaTotal() y productora.bandaMasPopular().
+​Detalle: productora delega los cálculos numéricos en asistente.gastoTotalSinDescuento() y banda.presupuesto(), operando con mensajes de orden superior (sum, max, count) sin iterar imperativamente.
