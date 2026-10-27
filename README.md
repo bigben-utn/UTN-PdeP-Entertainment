@@ -1,4 +1,4 @@
-PolimorfismoEs la cpacidad de distintos objetos de entender un mismo mensaje y responder de forma distina, sin que el invocador interactuar con ellos de forma uniforme.
+Polimorfismo Es la cpacidad de distintos objetos de entender un mismo mensaje y responder de forma distina, sin que el invocador interactuar con ellos de forma uniforme.
 ​Aplicación en el código:
 ​Clases / Objetos: fan y Vip frente a Asistente.
 ​Método: Asistente.comprar(entrada).
@@ -15,3 +15,9 @@ Encapsulamiento: Principio que restringe el acceso directo al estado interno de 
 ​Clase: Asistente.
 ​Método: Asistente.comprar(entrada).
 ​Detalle: Las referencias saldo y entradasHistoricas no se modifican de forma externa; la compra valida el saldo antes de descontar dinero y añadir la entrada, garantizando la consistencia interna del objeto.
+
+Manejo de Excepciones: Uso de fallas explícitas para detener la ejecución ante una condición no válida del dominio, evitando estados inconsistentes o retornos de valores artificiales.
+​Aplicación en el código:
+​Clase: Asistente.
+​Método: Asistente.comprar(entrada).
+​Detalle: Si el saldo <= 0, se lanza throw new AsistenteCompraConSaldoNegativo(), interrumpiendo el flujo antes de modificar las colecciones o el dinero del asistente.
